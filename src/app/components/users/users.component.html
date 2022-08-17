@@ -1,12 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>main header of user component html....</h1>
-  </body>
-</html>
+<!-- <h1>hello</h1> -->
+<h2>{{ title }}</h2>
+<!-- <h2 [innerText]="title"></h2> -->
+<div class="card">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-3">
+          <img [src]="user.avatar" alt="" class="img-fluid rounded-circle" />
+        </div>
+        <div class="col-9">
+          <h3>
+            {{ user.firstName + " " + user.lastName }}
+          </h3>
+          <p>DATE OF BIRTH : <span [innerHTML]="user.dob"></span></p>
+          <p>INCOME : <span [innerText]="user.income"></span></p>
+          <p>
+            TOTAL VOTES : {{ user.votes }}
+            <br />
+            <!-- Two-way binding -->
+            <input
+              type="number"
+              [value]="user.votes"
+              (change)="changeVotes($event)"
+            />Two-way binding<br /><br />
+            <!-- Banana model -->
+            <input type="number" [(ngModel)]="user.votes" />Banana model
+          </p>
+
+          <button
+            class="btn btn-info btn-sm"
+            (click)="onMoreInfo(user.lastName, user.company)"
+          >
+            More Info
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
